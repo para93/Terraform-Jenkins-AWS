@@ -22,7 +22,7 @@ pipeline {
        steps {
            dir ("vpc") {
                 script {
-                    withAWS(roleAccount:'308107017754', role:'mchung-ec2', useNode: true) {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     sh 'terraform init -no-color'
                     }
              }
