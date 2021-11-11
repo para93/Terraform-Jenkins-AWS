@@ -13,7 +13,7 @@ data "terraform_remote_state" "vpc" {
   config = {
     bucket = "dpt-web-data"
     key    = "dpt/vpc/dpt-vpc"
-    region = "us-east-1"
+    region = "us-east-2"
     }
   }
 
