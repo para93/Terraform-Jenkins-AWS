@@ -36,7 +36,7 @@ pipeline {
            dir ("vpc") {
             
                script {
-                    withAWS(roleAccount:'308107017754', role:'mchung-ec2', useNode: true) {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     sh 'terraform plan -no-color -out=plan.out'
                     }
                }
@@ -57,7 +57,7 @@ pipeline {
            dir ("vpc") {
             
               script {
-                    withAWS(roleAccount:'308107017754', role:'mchung-ec2', useNode: true) {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     sh 'terraform apply -no-color -auto-approve plan.out'
                     sh "terraform output"
                     }
