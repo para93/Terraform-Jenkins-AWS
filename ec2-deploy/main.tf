@@ -6,7 +6,7 @@ terraform {
   backend "s3" {
     bucket = "dpt-web-data"
     key    = "dpt/ec2/dpt-ec2-1"
-    region = "us-east-1"
+    region = "us-east-2"
   }
 }
 
